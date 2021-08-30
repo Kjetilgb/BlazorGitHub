@@ -25,7 +25,7 @@ jobs:
       
     # Changes the base-tag in index.html to 'BlazorGitHub' to match GtiHub Pages
     - name: Change base-tag in index.html from / to https://kjetilgb.github.io/BlazorGitHub/
-      run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorGitHub\/" \/>/g' release/wwroot/index.html
+      run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorGitHub\/" \/>/g' release/wwwroot/index.html
       
     # Publish static files to GitHub Pages
     - name: Commit wwwroot to GitHub Pages
