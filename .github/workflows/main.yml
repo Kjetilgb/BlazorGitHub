@@ -19,10 +19,6 @@ jobs:
       with:
         dotnet-version: '5.0.x'
     
-    # add .nojekyll file ti tell GitHub Pages to not treat this as a Jekyll Project
-    - name: Add .nojekyll file
-      run: touch release/wwwroot/.nojekyll
-    
     # Publishes Blazor Porject to the release-folder
     - name: Publish .NET Core Project
       run: dotnet publish BlazorGitHub.csproj -c Release -o release --nologo
@@ -30,6 +26,10 @@ jobs:
     # Changes the base-tag in index.html to 'BlazorGitHub' to match GtiHub Pages
     - name: Change base-tag in index.html from / to https://kjetilgb.github.io/BlazorGitHub/
       run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorGitHub\/" \/>/g' release/wwwroot/index.html
+      
+    # add .nojekyll file ti tell GitHub Pages to not treat this as a Jekyll Project
+    - name: Add .nojekyll file
+      run: touch release/wwwroot/.nojekyll
       
     # Publish static files to GitHub Pages
     - name: Commit wwwroot to GitHub Pages
