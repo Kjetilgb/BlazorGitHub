@@ -1,0 +1,23 @@
+﻿@page "/wishlist"
+
+@using BlazorGitHub.Shared.Components
+
+<TableComponent TableName="Ønskeliste" Items="values"></TableComponent>
+
+
+@code {
+    List<ItemType> values = new();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        values.AddRange(
+            new List<ItemType>
+            {
+                new ("Navn", "ProductName"),
+                new ("Bilde", "Picture"),
+                new("Link", "ProductLink"),
+                new("Kommentar", "Comment")
+            });
+    }
+
+}

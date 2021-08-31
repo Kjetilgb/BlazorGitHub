@@ -1,0 +1,30 @@
+﻿<h3>@TableName</h3>
+
+@using MatBlazor
+
+<MatTable Items="Items" Class="mat-elevation-z5" LoadInitialData="true" AllowSelection="false" Striped="true"
+          UseSortHeaderRow="true" DebounceMilliseconds="150" FilterByColumnName="Navn" PageSize="25"
+          SearchTermFieldPlaceHolder="Søk">
+    <MatTableHeader>
+        <MatSortHeaderRow>
+            @foreach (var item in Items)
+            {
+                <MatSortHeader SortId="@item.Value">
+                    <div>@item.Name</div>
+                </MatSortHeader>
+            }
+        </MatSortHeaderRow>
+    </MatTableHeader>
+    <MatTableRow>
+        @foreach (var item in Items)
+        {
+            <td>@item.Name</td>
+        }
+    </MatTableRow>
+</MatTable>
+
+@code {
+    [Parameter] public string TableName { get; set; }
+    [Parameter] public List<ItemType> Items { get; set; }
+    
+}
